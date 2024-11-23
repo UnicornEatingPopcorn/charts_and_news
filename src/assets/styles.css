@@ -1,0 +1,16 @@
+#carousel div {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  margin-right: 15px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s;
+}
+
+#carousel div:hover {
+  background-color: #007bff;
+  color: white;
+}
