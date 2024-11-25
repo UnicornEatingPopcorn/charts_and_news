@@ -25,48 +25,99 @@ export default function renderChartsPage() {
 
   const html = `
     <h1>CHARTS</h1>
-    <div id="carousel" style="display: flex; overflow-x: auto; margin-bottom: 20px;"></div>
-    <canvas id="myChart" style="width:100%; height:400px;"></canvas>
+    <div id="customLegend"></div>
+    <div id="carouselContainer">
+      <button id="carouselPrev">&#8592;</button>
+      <div id="carousel">
+        <div id="carouselItems"></div>
+      </div>
+      <button id="carouselNext">&#8594;</button>
+    </div>
+    <canvas id="myChart"></canvas>
   `;
 
-  function createCarousel(values) {
-    const carousel = document.getElementById('carousel');
+  const visibleItems = 6; // Number of visible items
+  let currentStartIndex = 0; // Track the first visible item
 
-    values.forEach((date, index) => {
-      const dayMark = document.createElement('div');
-      dayMark.textContent = date;
-      dayMark.style.margin = '0 10px';
-      dayMark.style.cursor = 'pointer';
-      dayMark.style.padding = '5px';
-      dayMark.style.backgroundColor = '#f0f0f0';
-      dayMark.style.borderRadius = '5px';
+  function initializeCarousel() {
+    const carouselItemsContainer = document.getElementById("carouselItems");
 
-      dayMark.addEventListener('click', function() {
+    xValues.forEach((date, index) => {
+      const dayElement = document.createElement("div");
+      dayElement.textContent = date;
+
+      dayElement.addEventListener("click", () => {
         highlightPointOnChart(index);
       });
 
-      carousel.appendChild(dayMark);
+      carouselItemsContainer.appendChild(dayElement);
+    });
+
+    document.getElementById("carouselPrev").addEventListener("click", () => {
+      slideCarousel(-1);
+    });
+
+    document.getElementById("carouselNext").addEventListener("click", () => {
+      slideCarousel(1);
+    });
+  }
+
+  function slideCarousel(direction) {
+    const totalItems = xValues.length;
+    const carouselItemsContainer = document.getElementById("carouselItems");
+    const itemWidth = 110; // Width + margin of each item (50px + 2*5px margin)
+
+    currentStartIndex += direction * visibleItems;
+
+    if (currentStartIndex < 0) currentStartIndex = 0;
+    if (currentStartIndex > totalItems - visibleItems)
+      currentStartIndex = totalItems - visibleItems;
+
+    const translateX = -currentStartIndex * itemWidth;
+    carouselItemsContainer.style.transform = `translateX(${translateX}px)`;
+  }
+
+  function updateCustomLegend(dayIndex) {
+    const legendContainer = document.getElementById("customLegend");
+    legendContainer.innerHTML = ""; // Clear previous legend
+
+    chart.data.datasets.forEach((dataset, index) => {
+      const chartValueBlock = document.createElement("div");
+      chartValueBlock.style.gridArea = `value${index + 1}`;
+      chartValueBlock.style.marginBottom = "10px";
+
+      const chartTitle = document.createElement("div");
+      chartTitle.className = "chartTitle"
+      chartTitle.textContent = `Chart ${index + 1}`; // Name each chart
+      chartTitle.style.gridArea = `chart${index + 1}`;
+      legendContainer.appendChild(chartTitle);
+
+      const chartValue = document.createElement("div");
+      chartValue.className = "chartValue"
+      chartValue.textContent = `${(dataset.data[dayIndex] * 100).toFixed(0)} GB`;
+      chartValue.style.color = dataset.borderColor; // Match the graph color
+
+      chartValueBlock.appendChild(chartValue);
+      legendContainer.appendChild(chartValueBlock);
     });
   }
 
   function highlightPointOnChart(dayIndex) {
     chart.data.datasets.forEach((dataset) => {
       dataset.pointRadius = dataset.data.map(() => 3); // Reset to normal size
-      dataset.pointBackgroundColor = dataset.data.map(() => "blue"); // Reset to normal color
+      dataset.pointBackgroundColor = dataset.data.map(() => "rgb(77 106 173)"); // Reset to normal color
+
+      const value = dataset.data[dayIndex];
+      dataset.label = value.toFixed(2);
     });
 
     chart.data.datasets.forEach((dataset) => {
       dataset.pointRadius[dayIndex] = 12; // Increase size for the selected point
-      dataset.pointBackgroundColor[dayIndex] = "red"; // Change color to red
-    });
-
-    chart.data.datasets.map((dataset, datasetIndex) => {
-      const value = dataset.data[dayIndex];
-      console.log(`Dataset ${datasetIndex + 1}, Day ${xValues[dayIndex]}: ${value}`);
-      return value;
+      dataset.pointBackgroundColor[dayIndex] = "rgb(192 28 31)"; // Change color to red
     });
 
     chart.update();
+    updateCustomLegend(dayIndex);
   }
   let chart;
 
@@ -78,24 +129,41 @@ export default function renderChartsPage() {
         data: {
           labels: xValues,
           datasets: [{
+            label: 1,
             lineTension: 0,
             data: generateRandomData(),
-            borderColor: "red",
+            borderColor: "rgb(192 28 31)",
             fill: false,
             pointRadius: 3
           }, {
+            label: 2,
             lineTension: 0,
             data: generateRandomData(),
-            borderColor: "blue",
+            borderColor: "rgb(77 106 173)",
             fill: false,
             pointRadius: 3
           }]
         },
         options: {
-          legend: {display: true}
+          legend: {
+            display: false,
+          },
+          scales: {
+            xAxes: [{ gridLines: {
+              drawOnChartArea: false,
+              drawBorder: true,
+            }}],
+            yAxes: [{
+              ticks: { min: 0, max: 1 },
+              gridLines: {
+                drawOnChartArea: false,
+                drawBorder: true,
+              }
+            }]
+          },
         }
       });
-      createCarousel(xValues);
+      initializeCarousel();
     } else {
       console.error("Failed to get canvas context");
     }

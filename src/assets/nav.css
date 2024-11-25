@@ -1,0 +1,32 @@
+nav {
+  display: grid;
+  align-items: center;
+  grid-template-areas: "logo charts news";
+  grid-template-columns: 1fr auto auto;
+  margin-bottom: 50px;
+}
+
+nav a {
+  display: var(--btn-display);
+  justify-content: var(--btn-justify-content);
+  align-items: var(--btn-align-items);
+  min-width: var(--btn-min-width);
+  height: var(--btn-height);
+  border-radius: var(--btn-border-radius);
+  margin: var(--btn-margin);
+  cursor: var(--btn-cursor);
+  background-color: var(--btn-bg-color);
+  color: black;
+  text-decoration: none;
+}
+
+nav a:hover {
+  border: var(--btn-hover);
+}
+
+.nav-logo {
+  display: block;
+  width: 137px;
+  height: 32px;
+  background: var(--nav-logo);
+}

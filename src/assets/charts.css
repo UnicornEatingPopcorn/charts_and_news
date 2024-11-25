@@ -1,0 +1,78 @@
+#carouselContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+#carousel {
+  display: flex;
+  width: 94%;
+  overflow: hidden;
+}
+
+#carouselItems {
+  display: flex;
+  transition: transform 0.3s;
+}
+
+#carouselItems div {
+  display: var(--btn-display);
+  justify-content: var(--btn-justify-content);
+  align-items: var(--btn-align-items);
+  min-width: var(--btn-min-width);
+  height: var(--btn-height);
+  border-radius: var(--btn-border-radius);
+  margin: var(--btn-margin);
+  cursor: var(--btn-cursor);
+  background-color: var(--btn-bg-color);
+}
+
+#carouselItems div:hover {
+  border: var(--btn-hover);
+}
+
+#carouselPrev,
+#carouselNext {
+  background: #191919;
+  border-radius: 12px;
+  border: none;
+  font-size: 25px;
+  color: white;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#carouselPrev:hover,
+#carouselNext:hover {
+  transform: scale(1.1);
+  transition: ease-in 0.1s;
+}
+
+#customLegend {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "chart1 chart2" "value1 value2";
+  column-gap: 20px;
+  align-items: flex-start;
+  padding: 10px;
+  min-width: 150px;
+  margin-right: 20px;
+  font-size: 21px;
+}
+
+#myChart {
+  width:100%;
+  height:400px;
+}
+
+.chartTitle {
+  margin-bottom: 5px;
+  color: #a2a2a2;
+}
+
+.chartValue {
+  font-size: 26px;
+  font-family: "Arial", sans-serif;
+}
