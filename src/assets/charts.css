@@ -21,14 +21,16 @@
   align-items: var(--btn-align-items);
   min-width: var(--btn-min-width);
   height: var(--btn-height);
+  border: var(--btn-border);
   border-radius: var(--btn-border-radius);
   margin: var(--btn-margin);
   cursor: var(--btn-cursor);
   background-color: var(--btn-bg-color);
+  transition: border-color 0.3s;
 }
 
 #carouselItems div:hover {
-  border: var(--btn-hover);
+  border-color: black;
 }
 
 #carouselPrev,
@@ -42,6 +44,7 @@
   height: 55px;
   cursor: pointer;
   z-index: 1;
+  margin: -2px 0 0;
 }
 
 #carouselPrev:hover,
@@ -60,6 +63,7 @@
   min-width: 150px;
   margin-right: 20px;
   font-size: 21px;
+  height: 90px;
 }
 
 #myChart {

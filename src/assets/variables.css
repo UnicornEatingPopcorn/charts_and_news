@@ -8,6 +8,12 @@
   --btn-height: 55px;
   --btn-margin: 0 5px;
   --btn-cursor: pointer;
+  --btn-border: 1px solid transparent;
   --btn-bg-color: rgb(237 237 237);
   --btn-hover: 1px solid black;
+  --line-clamp-display: -webkit-box;
+  --line-clamp: 2;
+  --line-clamp-overflow: hidden;
+  --line-clamp-text: ellipsis;
+  --line-clamp-box-orient: vertical;
 }

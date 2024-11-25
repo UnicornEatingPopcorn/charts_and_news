@@ -1,12 +1,12 @@
 export default function renderChartsPage() {
   function generateAugustDates() {
-    const year = new Date().getFullYear(); // Get the current year
+    const year = new Date().getFullYear();
     const augustDates = [];
 
     for (let day = 1; day <= 31; day++) {
-      const date = new Date(year, 7, day); // Month is 0-indexed, so 7 is August
+      const date = new Date(year, 7, day);
       const formattedDate = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-      augustDates.push(formattedDate); // Add the formatted date to the array
+      augustDates.push(formattedDate);
     }
 
     return augustDates;
@@ -14,8 +14,8 @@ export default function renderChartsPage() {
 
   function generateRandomData() {
     const randomData = [];
-    for (let i = 0; i < 31; i++) { // 31 days in August
-      const randomValue = Math.random() * (1 - 0.1) + 0.1; // Random value between 0.1 and 1
+    for (let i = 0; i < 31; i++) {
+      const randomValue = Math.random() * (1 - 0.1) + 0.1;
       randomData.push(randomValue);
     }
     return randomData;
@@ -36,8 +36,8 @@ export default function renderChartsPage() {
     <canvas id="myChart"></canvas>
   `;
 
-  const visibleItems = 6; // Number of visible items
-  let currentStartIndex = 0; // Track the first visible item
+  const visibleItems = 6;
+  let currentStartIndex = 0;
 
   function initializeCarousel() {
     const carouselItemsContainer = document.getElementById("carouselItems");
@@ -65,7 +65,7 @@ export default function renderChartsPage() {
   function slideCarousel(direction) {
     const totalItems = xValues.length;
     const carouselItemsContainer = document.getElementById("carouselItems");
-    const itemWidth = 110; // Width + margin of each item (50px + 2*5px margin)
+    const itemWidth = 110;
 
     currentStartIndex += direction * visibleItems;
 
@@ -79,7 +79,7 @@ export default function renderChartsPage() {
 
   function updateCustomLegend(dayIndex) {
     const legendContainer = document.getElementById("customLegend");
-    legendContainer.innerHTML = ""; // Clear previous legend
+    legendContainer.innerHTML = "";
 
     chart.data.datasets.forEach((dataset, index) => {
       const chartValueBlock = document.createElement("div");
@@ -88,14 +88,14 @@ export default function renderChartsPage() {
 
       const chartTitle = document.createElement("div");
       chartTitle.className = "chartTitle"
-      chartTitle.textContent = `Chart ${index + 1}`; // Name each chart
+      chartTitle.textContent = `Chart ${index + 1}`;
       chartTitle.style.gridArea = `chart${index + 1}`;
       legendContainer.appendChild(chartTitle);
 
       const chartValue = document.createElement("div");
       chartValue.className = "chartValue"
       chartValue.textContent = `${(dataset.data[dayIndex] * 100).toFixed(0)} GB`;
-      chartValue.style.color = dataset.borderColor; // Match the graph color
+      chartValue.style.color = dataset.borderColor;
 
       chartValueBlock.appendChild(chartValue);
       legendContainer.appendChild(chartValueBlock);
@@ -104,16 +104,16 @@ export default function renderChartsPage() {
 
   function highlightPointOnChart(dayIndex) {
     chart.data.datasets.forEach((dataset) => {
-      dataset.pointRadius = dataset.data.map(() => 3); // Reset to normal size
-      dataset.pointBackgroundColor = dataset.data.map(() => "rgb(77 106 173)"); // Reset to normal color
+      dataset.pointRadius = dataset.data.map(() => 3);
+      dataset.pointBackgroundColor = dataset.data.map(() => "rgb(77 106 173)");
 
       const value = dataset.data[dayIndex];
       dataset.label = value.toFixed(2);
     });
 
     chart.data.datasets.forEach((dataset) => {
-      dataset.pointRadius[dayIndex] = 12; // Increase size for the selected point
-      dataset.pointBackgroundColor[dayIndex] = "rgb(192 28 31)"; // Change color to red
+      dataset.pointRadius[dayIndex] = 12;
+      dataset.pointBackgroundColor[dayIndex] = "rgb(192 28 31)";
     });
 
     chart.update();

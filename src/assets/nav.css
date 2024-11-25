@@ -12,16 +12,18 @@ nav a {
   align-items: var(--btn-align-items);
   min-width: var(--btn-min-width);
   height: var(--btn-height);
+  border: var(--btn-border);
   border-radius: var(--btn-border-radius);
   margin: var(--btn-margin);
   cursor: var(--btn-cursor);
   background-color: var(--btn-bg-color);
   color: black;
   text-decoration: none;
+  transition: border-color 0.3s;
 }
 
 nav a:hover {
-  border: var(--btn-hover);
+  border-color: black;
 }
 
 .nav-logo {
