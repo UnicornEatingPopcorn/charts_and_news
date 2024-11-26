@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "A fireball erupts at the site of an Israeli airstrike in Beirut",
+      "description": "A fireball erupts at the site of an Israeli airstrike Monday in Tayouneh in Beirut&#39;s southern suburbs",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/241125-lebanon-beirut-israel-mn-1050-1caa96.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Residents embrace at the site of a rocket attack on Nov. 24, 2024 in Rinatya, Israel.",
+      "description": "Residents embrace at the site of a rocket attack Sunday  in Rinatya, Israel.",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/241125-israel-lebanon-mn-1050-c6c843.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Miriam al-Shami, whose husband and mother-in-law were killed, cries where her destroyed home once stood at the site of an Israeli airstrike in Beirut&#39;s Basta district  on Nov. 23 2024.",
+      "description": "Miriam al-Shami, whose husband and mother-in-law were killed, cries where her destroyed home once stood at the site of an Israeli airstrike Saturday in Beirut&#39;s Basta district.",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/241125-lebanon-beirut-israel-mn-1056-7bc7e4.jpg"
+    },
+    {
+      "id": 4,
+      "title": "A classic American car with a Cuban flag drives down a street in Havana, Monday, Oct. 21, 2024",
+      "description": "A classic American car with a Cuban flag drives down a street in Havana, Monday, Oct. 21, 2024",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/221125-Havana-cuba-blackouts-aa-150p-f2f15c.jpg"
+    },
+    {
+      "id": 5,
+      "title": "CUBA-ENERGY-BLACKOUT",
+      "description": "A street is lit by car lights during the third night of a nationwide blackout in Havana on Oct. 20, 2024.",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/241106-Cuba-blackout-aa-845p-e302db.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Cuba&#39;s energy grid suffered a complete blackout after Hurricane Rafael made landfall",
+      "description": "Cuba&#39;s energy grid suffers a complete blackout after Hurricane Rafael made landfall in Artemisa province as a category three hurricane, in Havana, Cuba November 6, 2024",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/241107-cuba-hurricane-rafael-wc-0942-fde315.jpg"
+    },
+    {
+      "id": 7,
+      "title": "A vacationing couple brings a suitcase of medical supplies to a drop-off location in Cuba",
+      "description": "A vacationing couple brings a suitcase of medical supplies to a drop-off location in Cuba",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/241125-Tourists-deliver-supplies-Cuba-aa-151p-93b4b0.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Monica Joseph recently came back from a visit to Cuba",
+      "description": "Monica Joseph recently came back from a visit to Cuba",
+      "img": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit_1500w/rockcms/2024-11/241125-Monica-Joseph-Cuba-aa-154p-619d72.jpg"
+    }
+  ]
+}

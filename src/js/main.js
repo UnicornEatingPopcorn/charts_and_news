@@ -1,4 +1,5 @@
 import { navigateTo, router } from "./router.js";
+import fetchAndDisplayItems from "./items.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
@@ -9,4 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   router();
+  fetchAndDisplayItems();
 });
